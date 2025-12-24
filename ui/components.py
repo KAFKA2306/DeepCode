@@ -64,11 +64,11 @@ def display_header():
         <div class="cyber-header">
             <div class="brand-container">
                 <div class="brand-title">DEEPCODE</div>
-                <div class="brand-subtitle">Autonomous Research & Engineering Matrix</div>
+                <div class="brand-subtitle">自律型リサーチ & エンジニアリング・マトリックス</div>
                     </div>
             <div class="status-indicator">
                 <div class="status-dot"></div>
-                <span>SYSTEM ONLINE</span>
+                <span>システム稼働中</span>
         </div>
     </div>
     """,
@@ -82,26 +82,26 @@ def display_features():
         {
             "icon": "feature_synthesis",
             "fallback": "🧬",
-            "title": "Neural Synthesis",
-            "desc": "Transform research papers directly into executable repositories via multi-agent LLM pipelines.",
+            "title": "ニューラル合成 (Neural Synthesis)",
+            "desc": "研究論文を、マルチエージェントLLMパイプラインを介して直接実行可能なリポジトリに変換します。",
         },
         {
             "icon": "feature_hyper",
             "fallback": "⚡",
-            "title": "Hyper-Speed Mode",
-            "desc": "Acceleration layer that parallelizes retrieval, planning, and implementation for fastest delivery.",
+            "title": "超高速モード (Hyper-Speed Mode)",
+            "desc": "検索、計画、実装を並列化し、最速でデリバリーするアクセラレーション・レイヤー。",
         },
         {
             "icon": "feature_cognition",
             "fallback": "🧠",
-            "title": "Cognitive Context",
-            "desc": "Semantic memory graphs retain methodology, datasets, and evaluation strategy during reasoning.",
+            "title": "認知的コンテキスト (Cognitive Context)",
+            "desc": "推論中、方法論、データセット、評価戦略を保持する意味記憶グラフ。",
         },
         {
             "icon": "feature_secure",
             "fallback": "🛡️",
-            "title": "Secure Sandbox(Coming Soon)",
-            "desc": "Isolated execution & validation environment keeps experiments safe and reproducible.",
+            "title": "セキュア・サンドボックス (近日公開)",
+            "desc": "実験を安全かつ再現可能に保つ、隔離された実行・検証環境。",
         },
     ]
 
@@ -120,8 +120,8 @@ def display_features():
             <div class="card-icon">
                 {icon_markup}
                 </div>
-            <div class="card-title">{card['title']}</div>
-            <div class="card-desc">{card['desc']}</div>
+            <div class="card-title">{card["title"]}</div>
+            <div class="card-desc">{card["desc"]}</div>
                 </div>
         """
 
@@ -195,30 +195,30 @@ def enhanced_progress_display_component(
 
     if chat_mode:
         workflow_steps = [
-            {"title": "INIT", "subtitle": "Boot agents"},
-            {"title": "PLAN", "subtitle": "Analyze intent"},
-            {"title": "SETUP", "subtitle": "Workspace"},
-            {"title": "DRAFT", "subtitle": "Generate plan"},
-            {"title": "CODE", "subtitle": "Implement"},
+            {"title": "INIT", "subtitle": "エージェント起動"},
+            {"title": "PLAN", "subtitle": "意図分析"},
+            {"title": "SETUP", "subtitle": "ワークスペース構築"},
+            {"title": "DRAFT", "subtitle": "計画生成"},
+            {"title": "CODE", "subtitle": "コーディング"},
         ]
     elif not enable_indexing:
         workflow_steps = [
-            {"title": "INIT", "subtitle": "Load systems"},
-            {"title": "ANALYZE", "subtitle": "Parse paper"},
-            {"title": "DOWNLOAD", "subtitle": "Collect refs"},
-            {"title": "PLAN", "subtitle": "Blueprint"},
-            {"title": "CODE", "subtitle": "Implement"},
+            {"title": "INIT", "subtitle": "システムロード"},
+            {"title": "ANALYZE", "subtitle": "論文解析"},
+            {"title": "DOWNLOAD", "subtitle": "資料収集"},
+            {"title": "PLAN", "subtitle": "設計"},
+            {"title": "CODE", "subtitle": "コーディング"},
         ]
     else:
         workflow_steps = [
-            {"title": "INIT", "subtitle": "Load systems"},
-            {"title": "ANALYZE", "subtitle": "Paper scan"},
-            {"title": "DOWNLOAD", "subtitle": "Docs & data"},
-            {"title": "PLAN", "subtitle": "Architect"},
-            {"title": "REF", "subtitle": "Key refs"},
-            {"title": "REPO", "subtitle": "GitHub sync"},
-            {"title": "INDEX", "subtitle": "Vectorize"},
-            {"title": "CODE", "subtitle": "Implementation"},
+            {"title": "INIT", "subtitle": "システムロード"},
+            {"title": "ANALYZE", "subtitle": "論文スキャン"},
+            {"title": "DOWNLOAD", "subtitle": "資料収集"},
+            {"title": "PLAN", "subtitle": "アーキテクチャ設計"},
+            {"title": "REF", "subtitle": "主要参考文献"},
+            {"title": "REPO", "subtitle": "GitHub連携"},
+            {"title": "INDEX", "subtitle": "ベクトル化"},
+            {"title": "CODE", "subtitle": "実装"},
         ]
 
     st.markdown("### 🛰️ Workflow Monitor")
@@ -271,10 +271,10 @@ def update_step_indicator(
 
 def chat_input_component(task_counter: int = 0) -> Optional[str]:
     """Render modern chat input for guided mode"""
-    st.markdown("### 💬 Neural Link Interface")
+    st.markdown("### 💬 ニューラル・リンク・インターフェース")
 
     user_input = st.chat_input(
-        placeholder="Input research directive or query...",
+        placeholder="研究指示またはクエリを入力...",
         key=f"chat_input_{task_counter}",
     )
     return user_input
@@ -298,7 +298,9 @@ def _save_uploaded_pdf(uploaded_file) -> Optional[str]:
 def input_method_selector(task_counter: int) -> Tuple[Optional[str], Optional[str]]:
     """Render the input method selection tabs with modern styling"""
 
-    tab1, tab2, tab3 = st.tabs(["📄 PDF UPLOAD", "🔗 URL LINK", "⚡ QUICK COMMAND"])
+    tab1, tab2, tab3 = st.tabs(
+        ["📄 PDFアップロード", "🔗 URLリンク", "⚡ クイックコマンド"]
+    )
 
     input_source: Optional[str] = None
     input_type: Optional[str] = None
@@ -306,7 +308,7 @@ def input_method_selector(task_counter: int) -> Tuple[Optional[str], Optional[st
     with tab1:
         st.markdown('<div style="padding:1rem;"></div>', unsafe_allow_html=True)
         uploaded_file = st.file_uploader(
-            "Upload Research Paper (PDF)",
+            "研究論文 (PDF) をアップロード",
             type="pdf",
             key=f"file_uploader_{task_counter}",
         )
@@ -320,7 +322,7 @@ def input_method_selector(task_counter: int) -> Tuple[Optional[str], Optional[st
     with tab2:
         st.markdown('<div style="padding:1rem;"></div>', unsafe_allow_html=True)
         url = st.text_input(
-            "ArXiv / GitHub Resource URL",
+            "ArXiv / GitHub リソースURL",
             placeholder="https://arxiv.org/abs/...",
             key=f"url_input_{task_counter}",
         )
@@ -331,8 +333,8 @@ def input_method_selector(task_counter: int) -> Tuple[Optional[str], Optional[st
     with tab3:
         st.markdown('<div style="padding:1rem;"></div>', unsafe_allow_html=True)
         query = st.text_area(
-            "Code Specifications / Abstract",
-            placeholder="Describe the algorithm or system requirements...",
+            "コード仕様 / アブストラクト",
+            placeholder="アルゴリズムやシステム要件を記述してください...",
             height=150,
             key=f"text_input_{task_counter}",
         )
@@ -348,29 +350,29 @@ def results_display_component(result: Any, task_counter: int):
 
     status = result.get("status", "unknown")
     is_success = status == "success"
-    status_label = "Mission Complete" if is_success else "Execution Failed"
+    status_label = "ミッション完了" if is_success else "実行失敗"
     status_color = "var(--success)" if is_success else "var(--error)"
     status_icon = icon_img("status_success" if is_success else "status_error", 56)
     if not status_icon:
         status_icon = "✅" if is_success else "⚠️"
     status_message = (
-        "Computation sequence completed successfully."
+        "計算シーケンスが正常に完了しました。"
         if is_success
-        else result.get("error", "Unknown error occurred during processing.")
+        else result.get("error", "処理中に不明なエラーが発生しました。")
     )
 
     st.markdown('<div style="height: 2rem;"></div>', unsafe_allow_html=True)
-    st.markdown("### 🚀 Operation Result")
+    st.markdown("### 🚀 実行結果")
 
     with st.container():
         if is_success:
-            st.success("Workflow completed across all stages ✅")
+            st.success("全ステージのワークフローが完了しました ✅")
         else:
-            st.error("Workflow interrupted. Check the logs below ⚠️")
+            st.error("ワークフローが中断されました。以下のログを確認してください ⚠️")
 
         col1, col2 = st.columns([2, 1])
         with col1:
-            with st.expander("📜 Execution Logs & Metadata", expanded=True):
+            with st.expander("📜 実行ログ & メタデータ", expanded=True):
                 st.json(result)
 
         with col2:
@@ -385,7 +387,9 @@ def results_display_component(result: Any, task_counter: int):
                 unsafe_allow_html=True,
             )
             st.download_button(
-                label="📥 DOWNLOAD ARTIFACTS" if is_success else "📥 DOWNLOAD LOGS",
+                label="📥 成果物をダウンロード"
+                if is_success
+                else "📥 ログをダウンロード",
                 data=str(result),
                 file_name=f"deepcode_result_{task_counter}.json",
                 mime="application/json",
@@ -395,17 +399,17 @@ def results_display_component(result: Any, task_counter: int):
 
 def system_status_component():
     """System status check component"""
-    st.markdown("### 🔧 System Diagnostics")
+    st.markdown("### 🔧 システム診断")
 
     col1, col2 = st.columns(2)
 
     with col1:
-        st.markdown("#### 📊 Core Metrics")
+        st.markdown("#### 📊 コア・メトリクス")
         st.info(f"**Python:** {sys.version.split()[0]}")
         st.info(f"**Platform:** {sys.platform}")
 
     with col2:
-        st.markdown("#### ⚙️ Runtime Status")
+        st.markdown("#### ⚙️ ランタイム・ステータス")
         try:
             import asyncio
 
@@ -420,10 +424,8 @@ def system_status_component():
 
 def error_troubleshooting_component():
     """Error troubleshooting component"""
-    with st.expander("🛠️ Diagnostics & Troubleshooting", expanded=False):
-        st.warning(
-            "If you encounter issues, please check your API keys in the sidebar."
-        )
+    with st.expander("🛠️ 診断とトラブルシューティング", expanded=False):
+        st.warning("問題が発生した場合は、サイドバーでAPIキーを確認してください。")
 
 
 def footer_component():
@@ -431,7 +433,7 @@ def footer_component():
     st.markdown(
         """
         <div style="text-align: center; margin-top: 6rem; padding: 2rem; color: rgba(255,255,255,0.2); font-family: var(--font-code); font-size: 0.7rem; border-top: 1px solid rgba(255,255,255,0.05);">
-            DEEPCODE_SYSTEMS // <span style="color: var(--primary);">OPERATIONAL</span> // VERSION 3.0.1
+            DEEPCODE_SYSTEMS // <span style="color: var(--primary);">稼働中 (OPERATIONAL)</span> // VERSION 3.0.1
     </div>
     """,
         unsafe_allow_html=True,
@@ -440,14 +442,14 @@ def footer_component():
 
 def render_sidebar_feed(max_items: int = 12):
     """Render live mission feed inside sidebar."""
-    st.markdown("#### 📡 Mission Feed")
+    st.markdown("#### 📡 ミッション・フィード")
     events = list(st.session_state.get("sidebar_events", []))
 
     col1, col2 = st.columns([1, 1])
     with col1:
-        st.caption("Real-time agent telemetry")
+        st.caption("リアルタイム・エージェント・テレメトリ")
     with col2:
-        if st.button("Clear Feed", key="sidebar_clear_feed"):
+        if st.button("フィード消去", key="sidebar_clear_feed"):
             st.session_state.sidebar_events = []
             events = []
             st.session_state.sidebar_feed_last_cleared = datetime.utcnow().strftime(
@@ -455,7 +457,7 @@ def render_sidebar_feed(max_items: int = 12):
             )
 
     if not events:
-        st.caption("Awaiting activity...")
+        st.caption("アクティビティ待機中...")
         return
 
     recent_events = list(reversed(events[-max_items:]))
@@ -486,7 +488,7 @@ def render_sidebar_feed(max_items: int = 12):
 
 def render_system_monitor():
     """Display current backend + command telemetry."""
-    st.markdown("#### 🧬 System Monitor")
+    st.markdown("#### 🧬 システム・モニター")
     processing = st.session_state.get("processing", False)
     mode = st.session_state.get("requirement_analysis_mode", "direct").upper()
     indexing_enabled = st.session_state.get("enable_indexing", True)
@@ -515,7 +517,7 @@ def render_system_monitor():
             <div class="latest-stage">
                 <strong>{last_stage if last_stage else "--"}</strong>
                 {"· " + str(last_progress) + "%" if last_progress is not None else ""}
-                <br/>{last_message or "Awaiting telemetry..."}
+                <br/>{last_message or "テレメトリ待機中..."}
             </div>
         </div>
         """,
@@ -523,15 +525,15 @@ def render_system_monitor():
     )
 
     if last_error:
-        st.warning(f"Last error: {last_error}")
+        st.warning(f"最後のエラー: {last_error}")
 
 
 def render_log_viewer(max_lines: int = 50):
     """Display live log stream for current mission in a scrollable container."""
-    st.markdown("#### 📁 Live Log Stream")
+    st.markdown("#### 📁 ライブ・ログ・ストリーム")
     logs_dir = BASE_DIR / "logs"
     if not logs_dir.exists():
-        st.info("Logs directory not found.")
+        st.info("ログディレクトリが見つかりません。")
         return
 
     log_files = sorted(
@@ -540,7 +542,7 @@ def render_log_viewer(max_lines: int = 50):
         reverse=True,
     )
     if not log_files:
-        st.info("No log files available yet.")
+        st.info("利用可能なログファイルはまだありません。")
         return
 
     start_ts = st.session_state.get("workflow_start_time")
@@ -568,7 +570,7 @@ def render_log_viewer(max_lines: int = 50):
             selected_path = log_files[0]
 
     if waiting_for_new_log:
-        st.caption("Waiting for current task log to be created...")
+        st.caption("現在のタスクログの作成を待機中...")
         return
 
     st.session_state.active_log_file = str(selected_path)
@@ -588,7 +590,7 @@ def render_log_viewer(max_lines: int = 50):
     st.caption(f"{status_icon} {selected_path.name} | Last {len(tail_lines)} lines")
 
     if not tail_lines:
-        st.info("Log file is empty.")
+        st.info("ログファイルが空です。")
         return
 
     # Build log HTML with scrollable container
@@ -646,7 +648,7 @@ def render_log_viewer(max_lines: int = 50):
     <div style="max-height: 600px; overflow-y: auto; overflow-x: hidden;
                 padding: 0.5rem; background: rgba(0,0,0,0.2); border-radius: 4px;
                 border: 1px solid rgba(255,255,255,0.1);">
-        {''.join(log_html_parts)}
+        {"".join(log_html_parts)}
     </div>
     """
 
@@ -685,11 +687,11 @@ def requirement_mode_selector() -> str:
     """
     Render the requirement workflow mode selector.
     """
-    mode_labels = {"direct": "🚀 Direct Mode", "guided": "🧭 Guided Mode"}
+    mode_labels = {"direct": "🚀 ダイレクトモード", "guided": "🧭 ガイドモード"}
     current_mode = st.session_state.get("requirement_analysis_mode", "direct")
 
     selection = st.radio(
-        "Requirement Intake Mode",
+        "要件取り込みモード",
         options=list(mode_labels.keys()),
         index=0 if current_mode != "guided" else 1,
         horizontal=True,
@@ -712,7 +714,7 @@ def guided_requirement_workflow() -> Tuple[Optional[str], bool]:
     Render the guided requirement analysis workflow.
     """
 
-    st.markdown("### 🧭 Guided Requirement Workflow")
+    st.markdown("### 🧭 ガイド付き要件定義ワークフロー")
 
     step = st.session_state.get("requirement_analysis_step", "input")
     st.session_state.setdefault(
@@ -723,21 +725,19 @@ def guided_requirement_workflow() -> Tuple[Optional[str], bool]:
     )
 
     step_titles = {
-        "input": "Step 1 · Describe Requirements",
-        "questions": "Step 2 · Answer Guiding Questions",
-        "summary": "Step 3 · Review Requirement Document",
-        "editing": "Step 4 · Request Changes",
+        "input": "ステップ 1 · 要件の記述",
+        "questions": "ステップ 2 · ガイド質問への回答",
+        "summary": "ステップ 3 · 要件ドキュメントの確認",
+        "editing": "ステップ 4 · 変更リクエスト",
     }
-    st.caption(
-        f"Current Stage: {step_titles.get(step, 'Step 1 · Describe Requirements')}"
-    )
+    st.caption(f"現在のステージ: {step_titles.get(step, 'ステップ 1 · 要件の記述')}")
 
     confirmed_doc = st.session_state.get("confirmed_requirement_text")
 
     if step == "input":
-        st.markdown("#### 1 · Describe your project")
+        st.markdown("#### 1 · プロジェクトの記述")
         st.text_area(
-            "Describe the product scope, tech stack, performance targets, and constraints:",
+            "プロダクトのスコープ、技術スタック、パフォーマンス目標、制約などを記述してください:",
             key="guided_initial_requirement",
             height=180,
         )
@@ -745,9 +745,9 @@ def guided_requirement_workflow() -> Tuple[Optional[str], bool]:
 
         col1, col2 = st.columns(2)
         with col1:
-            if st.button("Generate guiding questions", type="primary"):
+            if st.button("ガイド質問を生成", type="primary"):
                 if not initial_text.strip():
-                    st.warning("Please enter your project requirements first.")
+                    st.warning("先にプロジェクト要件を入力してください。")
                 else:
                     st.session_state.initial_requirement = initial_text.strip()
                     st.session_state.questions_generating = True
@@ -764,28 +764,28 @@ def guided_requirement_workflow() -> Tuple[Optional[str], bool]:
                     st.rerun()
 
         with col2:
-            if st.button("Skip Q&A and use current spec", type="secondary"):
+            if st.button("Q&Aをスキップして現在の仕様を使用", type="secondary"):
                 if not initial_text.strip():
-                    st.warning("Please enter your project requirements first.")
+                    st.warning("先にプロジェクト要件を入力してください。")
                 else:
                     final_doc = initial_text.strip()
                     st.session_state.initial_requirement = final_doc
                     st.session_state.confirmed_requirement_text = final_doc
                     st.session_state.requirements_confirmed = True
                     st.success(
-                        "Current description locked as the requirement document. Implementation will proceed next."
+                        "現在の記述が要件ドキュメントとしてロックされました。実装に進みます。"
                     )
 
     elif step == "questions":
-        st.markdown("#### 2 · Answer guiding questions")
+        st.markdown("#### 2 · ガイド質問への回答")
         if st.session_state.get("questions_generating"):
-            st.info("LLM is crafting guiding questions. Please wait...")
+            st.info("LLMがガイド質問を作成しています。お待ちください...")
 
         questions = st.session_state.get("generated_questions", [])
         question_ids: List[str] = []
 
         if not questions:
-            st.caption("Guiding questions will appear once generation is complete.")
+            st.caption("生成が完了するとここにガイド質問が表示されます。")
         else:
             for idx, question in enumerate(questions):
                 if isinstance(question, dict):
@@ -806,26 +806,24 @@ def guided_requirement_workflow() -> Tuple[Optional[str], bool]:
 
                 question_ids.append(q_id)
 
-                st.markdown(
-                    f"**Q{idx + 1}. {q_text or 'Please answer this question'}**"
-                )
+                st.markdown(f"**Q{idx + 1}. {q_text or 'この質問に回答してください'}**")
                 meta_parts = [part for part in [category, importance] if part]
                 if meta_parts:
                     st.caption(" / ".join(meta_parts))
                 if hint:
-                    st.caption(f"Hint: {hint}")
+                    st.caption(f"ヒント: {hint}")
 
                 answer_key = f"guided_answer_{idx}"
                 if answer_key not in st.session_state:
                     default_answer = st.session_state.user_answers.get(q_id, "")
                     st.session_state[answer_key] = default_answer
 
-                st.text_area("Your answer", key=answer_key, height=100)
+                st.text_area("回答", key=answer_key, height=100)
 
         col1, col2, col3 = st.columns(3)
         with col1:
             if st.button(
-                "Generate requirement document", type="primary", disabled=not questions
+                "要件ドキュメントを生成", type="primary", disabled=not questions
             ):
                 answers_payload = {}
                 for idx, q_id in enumerate(question_ids):
@@ -844,9 +842,7 @@ def guided_requirement_workflow() -> Tuple[Optional[str], bool]:
                 st.rerun()
 
         with col2:
-            if st.button(
-                "Generate without answers", type="secondary", disabled=not questions
-            ):
+            if st.button("回答なしで生成", type="secondary", disabled=not questions):
                 st.session_state.user_answers = {}
                 st.session_state.requirements_generating = True
                 st.session_state.requirement_analysis_step = "summary"
@@ -856,33 +852,33 @@ def guided_requirement_workflow() -> Tuple[Optional[str], bool]:
                 st.rerun()
 
         with col3:
-            if st.button("Back to Step 1"):
+            if st.button("ステップ 1 に戻る"):
                 reset_guided_workflow_state(preserve_initial=True)
                 st.rerun()
 
     elif step == "summary":
-        st.markdown("#### 3 · AI-generated requirement document")
+        st.markdown("#### 3 · AI生成要件ドキュメント")
         if st.session_state.get("requirements_generating"):
-            st.info("Generating requirement document. Please wait...")
+            st.info("要件ドキュメントを生成中です。お待ちください...")
 
         summary = (st.session_state.get("detailed_requirements") or "").strip()
 
         if summary:
             st.markdown(summary)
             st.download_button(
-                "Download requirement document",
+                "要件ドキュメントをダウンロード",
                 summary,
                 file_name="deepcode_requirements.md",
                 mime="text/markdown",
                 use_container_width=True,
             )
         else:
-            st.caption("Waiting for requirement document to be generated...")
+            st.caption("要件ドキュメントの生成を待機中...")
 
         col1, col2, col3 = st.columns(3)
         with col1:
             if st.button(
-                "Confirm and start implementation ✅",
+                "確認して実装を開始 ✅",
                 type="primary",
                 disabled=not summary,
             ):
@@ -891,25 +887,25 @@ def guided_requirement_workflow() -> Tuple[Optional[str], bool]:
                     st.session_state.confirmed_requirement_text = final_doc.strip()
                     st.session_state.requirements_confirmed = True
                     st.success(
-                        "Requirement document confirmed. Implementation pipeline will start next."
+                        "要件ドキュメントが確認されました。実装パイプラインを開始します。"
                     )
                 else:
-                    st.warning("No requirement document available yet.")
+                    st.warning("要件ドキュメントがまだありません。")
 
         with col2:
-            if st.button("Request edits", type="secondary", disabled=not summary):
+            if st.button("修正をリクエスト", type="secondary", disabled=not summary):
                 st.session_state.requirement_analysis_step = "editing"
                 st.session_state.guided_edit_feedback = ""
 
         with col3:
-            if st.button("Restart Q&A", type="secondary"):
+            if st.button("Q&Aをリスタート", type="secondary"):
                 reset_guided_workflow_state(preserve_initial=True)
                 st.rerun()
 
     elif step == "editing":
-        st.markdown("#### 4 · Modify requirement document")
+        st.markdown("#### 4 · 要件ドキュメントの修正")
         st.text_area(
-            "Describe the changes or clarifications you need:",
+            "必要な変更や明確化したい内容を記述してください:",
             key="guided_edit_feedback",
             height=160,
         )
@@ -917,24 +913,26 @@ def guided_requirement_workflow() -> Tuple[Optional[str], bool]:
 
         col1, col2 = st.columns(2)
         with col1:
-            if st.button("Submit change request", type="primary"):
+            if st.button("変更リクエストを送信", type="primary"):
                 if not feedback_value.strip():
-                    st.warning("Please describe the requested changes.")
+                    st.warning("変更内容を記述してください。")
                 else:
                     st.session_state.edit_feedback = feedback_value.strip()
                     st.session_state.requirements_editing = True
-                    st.info("Updating requirement document based on your feedback...")
+                    st.info(
+                        "フィードバックに基づいて要件ドキュメントを更新しています..."
+                    )
 
         with col2:
-            if st.button("Back to requirement document"):
+            if st.button("要件ドキュメントに戻る"):
                 st.session_state.requirement_analysis_step = "summary"
                 st.session_state.guided_edit_feedback = ""
 
         if st.session_state.get("requirements_editing"):
-            st.info("Requirement document is updating...")
+            st.info("要件ドキュメントを更新中...")
 
     if confirmed_doc:
-        st.success("Requirement document locked. You can start implementation anytime.")
+        st.success("要件ドキュメントがロックされました。いつでも実装を開始できます。")
 
     return (confirmed_doc if confirmed_doc else None, bool(confirmed_doc))
 
@@ -945,8 +943,8 @@ def sidebar_control_panel():
         st.markdown(
             """
             <div style="margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                <h2 style="margin:0; color:white;">CONTROL DECK</h2>
-                <div style="font-family:var(--font-code); color:var(--primary); font-size:0.8rem;">// MISSION CONTROL</div>
+                <h2 style="margin:0; color:white;">コントロール・デッキ (CONTROL DECK)</h2>
+                <div style="font-family:var(--font-code); color:var(--primary); font-size:0.8rem;">// ミッション管理</div>
         </div>
         """,
             unsafe_allow_html=True,
@@ -957,7 +955,7 @@ def sidebar_control_panel():
         if workflow_start:
             render_log_viewer()
         else:
-            st.info("Awaiting next mission run to stream logs.")
+            st.info("ログをストリーミングするにはミッションを実行してください。")
     st.markdown(
         """
             <div style="font-size: 0.7rem; color: rgba(255,255,255,0.3); text-align: center; margin-top: 1rem;">

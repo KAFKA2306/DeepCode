@@ -34,7 +34,7 @@ def setup_page_config():
         initial_sidebar_state="expanded",
         menu_items={
             "Get Help": "https://github.com/deepcode",
-            "About": "DeepCode AI Research Engine v3.0",
+            "About": "DeepCode AI リサーチエンジン v3.0",
         },
     )
 
@@ -114,7 +114,7 @@ def render_input_area():
             col1, col2, col3 = st.columns([1, 2, 1])
             with col2:
                 if st.button(
-                    "START CODING 🚀", type="primary", use_container_width=True
+                    "コーディング開始 🚀", type="primary", use_container_width=True
                 ):
                     if is_guided:
                         st.session_state.confirmed_requirement_text = None
@@ -125,7 +125,7 @@ def render_input_area():
                 """
                 <div style="padding:1.5rem; border:1px solid var(--primary); border-radius:4px; background:rgba(0, 242, 255, 0.05); text-align:center;">
                     <div class="status-dot" style="display:inline-block; margin-right:10px;"></div>
-                    <span style="font-family: var(--font-code); color: var(--primary); animation: pulse-glow 2s infinite;">NEURAL PROCESSING ACTIVE...</span>
+                    <span style="font-family: var(--font-code); color: var(--primary); animation: pulse-glow 2s infinite;">ニューラル処理実行中...</span>
                 </div>
                 """,
                 unsafe_allow_html=True,
@@ -135,7 +135,7 @@ def render_input_area():
             st.markdown(
                 """
                 <div style="text-align:center; color:rgba(255,255,255,0.3); font-family:var(--font-code); font-size:0.8rem;">
-                    AWAITING INPUT SIGNAL...
+                    入力シグナル待機中...
                 </div>
                 """,
                 unsafe_allow_html=True,

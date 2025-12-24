@@ -1,32 +1,31 @@
 <!--
-Thanks for contributing to DeepCode!
+DeepCodeへの貢献ありがとうございます！
 
-Please ensure your pull request is ready for review before submitting.
+プルリクエストを送信する前に、レビューの準備ができていることを確認してください。
 
-About this template
-
-This template helps contributors provide a clear and concise description of their changes. Feel free to adjust it as needed.
+このテンプレートについて:
+このテンプレートは、貢献者が変更内容を明確かつ簡潔に説明するのを支援するためのものです。必要に応じて調整してください。
 -->
 
-## Description
+## 概要
 
-[Briefly describe the changes made in this pull request.]
+[このプルリクエストで行った変更について簡潔に説明してください。]
 
-## Related Issues
+## 関連するIssue
 
-[Reference any related issues or tasks addressed by this pull request.]
+[このプルリクエストで対処する関連Issueやタスクへの参照を記載してください。例: #123]
 
-## Changes Made
+## 変更内容
 
-[List the specific changes made in this pull request.]
+[このプルリクエストで行った具体的な変更箇所のリストを記載してください。]
 
-## Checklist
+## チェックリスト
 
-- [ ] Changes tested locally
-- [ ] Code reviewed
-- [ ] Documentation updated (if necessary)
-- [ ] Unit tests added (if applicable)
+- [ ] ローカルで変更をテストした
+- [ ] コードのセルフレビューを行った
+- [ ] ドキュメントを更新した（必要な場合）
+- [ ] ユニットテストを追加した（適用可能な場合）
 
-## Additional Notes
+## 補足事項
 
-[Add any additional notes or context for the reviewer(s).]
+[レビュアーに向けた追加のメモやコンテキストがあれば記載してください。]

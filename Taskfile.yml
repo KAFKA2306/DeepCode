@@ -1,0 +1,33 @@
+version: "3"
+
+tasks:
+  setup:
+    desc: Install dependencies
+    cmds:
+      - uv sync
+
+  dev:
+    desc: Run the web UI
+    cmds:
+      - uv run streamlit run ui/streamlit_app.py
+
+  cli:
+    desc: Run the CLI
+    cmds:
+      - uv run python cli/main_cli.py
+
+  format:
+    desc: Format code with ruff
+    cmds:
+      - uv run ruff format .
+
+  lint:
+    desc: Lint code with ruff
+    cmds:
+      - uv run ruff check .
+
+  clean:
+    desc: Remove temporary files
+    cmds:
+      - rm -rf .venv
+      - find . -type d -name "__pycache__" -exec rm -rf {} +

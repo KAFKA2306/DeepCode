@@ -114,10 +114,10 @@ async def process_input_async(
             if progress_callback:
                 if input_type == "chat":
                     progress_callback(
-                        5, "🚀 Initializing chat-based planning pipeline..."
+                        5, "🚀 チャットベース計画パイプラインを初期化中..."
                     )
                 else:
-                    progress_callback(5, "🚀 Initializing AI research engine...")
+                    progress_callback(5, "🚀 AIリサーチエンジンを初期化中...")
 
             # Choose pipeline based on input type
             if input_type == "chat":
@@ -138,8 +138,8 @@ async def process_input_async(
                 )
 
             return {
-                "analysis_result": "Integrated into complete workflow",
-                "download_result": "Integrated into complete workflow",
+                "analysis_result": "ワークフローに統合完了",
+                "download_result": "ワークフローに統合完了",
                 "repo_result": repo_result,
                 "status": "success",
             }
@@ -239,11 +239,11 @@ def run_async_task(coro):
         result = future.result(timeout=300)  # 5 minute timeout
         return result
     except concurrent.futures.TimeoutError:
-        st.error("Processing timeout after 5 minutes. Please try again.")
+        st.error("処理が5分以上かかりタイムアウトしました。もう一度お試しください。")
         raise TimeoutError("Processing timeout")
     except Exception as e:
         # If thread pool execution fails, try direct execution
-        st.warning(f"Threaded async execution failed: {e}, trying direct execution...")
+        st.warning(f"スレッド非同期実行に失敗しました: {e}, 直接実行を試みます...")
         try:
             # Fallback method: run directly in current thread
             loop = None
@@ -331,11 +331,11 @@ def run_async_task_simple(coro):
                 return result
             except concurrent.futures.TimeoutError:
                 st.error(
-                    "Processing timeout after 5 minutes. Please try again with a smaller file."
+                    "処理が5分以上かかりタイムアウトしました。ファイルを小さくしてもう一度お試しください。"
                 )
                 raise TimeoutError("Processing timeout")
             except Exception as e:
-                st.error(f"Async processing error: {e}")
+                st.error(f"非同期処理エラー: {e}")
                 raise e
             finally:
                 # Ensure thread pool is properly closed
@@ -400,7 +400,7 @@ def handle_processing_workflow(
     )
     log_sidebar_event(
         "SYSTEM",
-        f"Workflow started ({'guided/chat' if chat_mode else 'research'} mode)",
+        f"ワークフロー開始 ({'ガイド/チャット' if chat_mode else 'リサーチ'} モード)",
         extra={"input_type": input_type, "indexing": enable_indexing},
     )
 
@@ -472,12 +472,12 @@ def handle_processing_workflow(
 
     # Step 1: Initialization
     if chat_mode:
-        update_progress(5, "🚀 Initializing chat-based planning engine...")
+        update_progress(5, "🚀 チャットベース計画エンジンを初期化中...")
     elif enable_indexing:
-        update_progress(5, "🚀 Initializing AI research engine and loading models...")
+        update_progress(5, "🚀 AIリサーチエンジンとモデルを読み込み中...")
     else:
         update_progress(
-            5, "🚀 Initializing AI research engine (Fast mode - indexing disabled)..."
+            5, "🚀 AIリサーチエンジンを初期化中 (高速モード - インデックス化なし)..."
         )
     update_step_indicator(step_indicators, workflow_steps, 0, "active")
 
@@ -510,7 +510,7 @@ def handle_processing_workflow(
     # Update final status based on results
     if result["status"] == "success":
         # Complete all steps
-        update_progress(100, "✅ All processing stages completed successfully!")
+        update_progress(100, "✅ 全ての処理ステージが正常に完了しました！")
         update_step_indicator(
             step_indicators, workflow_steps, len(workflow_steps), "completed"
         )
@@ -519,22 +519,22 @@ def handle_processing_workflow(
         st.balloons()  # Add celebration animation
         if chat_mode:
             display_status(
-                "🎉 Chat workflow completed! Your requirements have been analyzed and code has been generated.",
+                "🎉 チャットワークフロー完了！ 要件が分析され、コードが生成されました。",
                 "success",
             )
         elif enable_indexing:
             display_status(
-                "🎉 Workflow completed! Your research paper has been successfully processed and code has been generated.",
+                "🎉 ワークフロー完了！ 論文が正常に処理され、コードが生成されました。",
                 "success",
             )
         else:
             display_status(
-                "🎉 Fast workflow completed! Your research paper has been processed (indexing skipped for faster processing).",
+                "🎉 高速ワークフロー完了！ 論文が処理されました (インデックス化はスキップ)。",
                 "success",
             )
         log_sidebar_event(
             "COMPLETE",
-            "All stages completed successfully.",
+            "全ステージ正常終了。",
             level="success",
             extra={
                 "input_type": input_type,
@@ -545,10 +545,10 @@ def handle_processing_workflow(
 
     else:
         # Processing failed
-        update_progress(0, "❌ Processing failed - see error details below")
+        update_progress(0, "❌ 処理失敗 - 下記のエラー詳細を確認してください")
         update_step_indicator(step_indicators, workflow_steps, current_step, "error")
         display_status(
-            f"❌ Processing encountered an error: {result.get('error', 'Unknown error')}",
+            f"❌ 処理中にエラーが発生しました: {result.get('error', 'Unknown error')}",
             "error",
         )
         failure_stage = (
@@ -558,7 +558,7 @@ def handle_processing_workflow(
         )
         log_sidebar_event(
             failure_stage,
-            f"Processing failed: {result.get('error', 'Unknown error')}",
+            f"処理失敗: {result.get('error', 'Unknown error')}",
             level="error",
         )
 
@@ -700,7 +700,7 @@ async def handle_requirement_modification_workflow(
             st.session_state.current_progress = progress
             st.session_state.current_message = message
 
-        update_progress(10, "🔧 Initializing requirement modification agent...")
+        update_progress(10, "🔧 要件修正エージェントを初期化中...")
 
         # Initialize RequirementAnalysisAgent
         agent = RequirementAnalysisAgent()
@@ -708,7 +708,7 @@ async def handle_requirement_modification_workflow(
         # Initialize agent (LLM is initialized internally)
         await agent.initialize()
 
-        update_progress(50, "✏️ Modifying requirements based on your feedback...")
+        update_progress(50, "✏️ フィードバックに基づいて要件を修正中...")
 
         # Modify requirements
         result = await agent.modify_requirements(
@@ -719,7 +719,7 @@ async def handle_requirement_modification_workflow(
         # Cleanup
         await agent.cleanup()
 
-        update_progress(100, "✅ Requirements modification completed!")
+        update_progress(100, "✅ 要件の修正が完了しました！")
 
         return {
             "status": "success",
