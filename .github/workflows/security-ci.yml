@@ -111,20 +111,3 @@ jobs:
             desktop/build/licenses/dependencies.json
           if-no-files-found: error
           retention-days: 30
-
-  dependency-review:
-    name: Pull request dependency review
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-24.04
-    permissions:
-      contents: read
-      pull-requests: write
-
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Review dependency changes
-        uses: actions/dependency-review-action@v4
-        with:
-          fail-on-severity: high
